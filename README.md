@@ -1,2 +1,2 @@
 # wss-secured-websocket
-Websockect project using SSL and basic authentication
+Websocket project using SSL and basic authentication
