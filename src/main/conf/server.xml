@@ -89,7 +89,8 @@
     <Connector port="8443"  protocol="HTTP/1.1"
                SSLEnabled="true" URIEncoding="UTF-8"
                maxThreads="250" scheme="https" secure="true"
-               keystoreFile="/devel/projects/tomitribe/code/wss-secured-websocket/src/main/certs/self-signed-cert/keystore.jks" keystorePass="123456" keyAlias="tomcat"
+               keystoreFile="conf/keystore.jks"
+               keystorePass="123456" keyAlias="tomcat"
                clientAuth="false" sslProtocol="TLS" />
     <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443 with HTTP/2
          This connector uses the APR/native implementation which always uses

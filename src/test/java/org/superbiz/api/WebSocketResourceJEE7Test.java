@@ -103,6 +103,7 @@ public class WebSocketResourceJEE7Test {
                 .configurator(configurator)
                 .build();
 
+        //use same keystore as the server
         authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE",
                 "src/main/conf/keystore.jks");
         authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE_PWD",
