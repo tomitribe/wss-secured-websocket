@@ -16,11 +16,9 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.net.ssl.SSLContext;
 import javax.websocket.ClientEndpointConfig;
 import javax.websocket.CloseReason;
 import javax.websocket.ContainerProvider;
@@ -41,7 +39,6 @@ import static java.util.Arrays.asList;
 import static javax.xml.bind.DatatypeConverter.printBase64Binary;
 import static org.junit.Assert.assertEquals;
 
-//@Ignore
 @RunAsClient
 @RunWith(Arquillian.class)
 public class WebSocketResourceJEE7Test {
@@ -53,7 +50,7 @@ public class WebSocketResourceJEE7Test {
 
     @Deployment(name = "cve", testable = false)
     public static final WebArchive app() {
-        return ShrinkWrap.create(WebArchive.class, "cve.war")
+        return ShrinkWrap.create(WebArchive.class, "example.war")
                 .addClasses(WebSocketResource.class)
                 .addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"), "web.xml");
     }
@@ -106,17 +103,14 @@ public class WebSocketResourceJEE7Test {
                 .configurator(configurator)
                 .build();
 
-//        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_CONTEXT", SSLContext.getInstance("TLS"));
         authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE", "/devel/projects/tomitribe/code/wss-secured-websocket/src/main/certs/self-signed-cert/keystore.jks");
         authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE_PWD", "123456");
-//        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_PROTOCOLS", );
-
 
         Session session = ContainerProvider.getWebSocketContainer()
                 .connectToServer(
                         endpoint,
                         authorizationConfiguration,
-                        new URI("wss", uri.getUserInfo(), "localhost", PORT, "/cve/socket",
+                        new URI("wss", uri.getUserInfo(), uri.getHost(), PORT, "/example/socket",
                                 null, null));
 
         latch.await(1, TimeUnit.MINUTES);

@@ -5,28 +5,14 @@
               http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="tomee" default="true">
         <configuration>
-            <!--<property name="serverXml">${project.basedir}/src/test/conf/server.xml</property>-->
-            <property name="serverXml">/devel/projects/tomitribe/code/wss-secured-websocket/src/test/conf/server.xml</property>
+            <property name="serverXml">/devel/projects/tomitribe/code/wss-secured-websocket/src/test/conf/server.xml
+            </property>
 
-            <!--<property name="classifier">webprofile</property>-->
             <property name="httpPort">8081</property>
             <property name="httpsPort">8443</property>
-            <!--<property name="stopPort">-1</property>-->
-            <!--<property name="skipHttp">true</property>-->
             <property name="appWorkingDir">target/test-apache-tomcat-workdir</property>
             <property name="dir">target/apache-tomee</property>
             <property name="conf">/devel/projects/tomitribe/code/wss-secured-websocket/src/test/conf</property>
-            <!--<property name="user">tomee</property>-->
-            <!--<property name="pass">tomee</property>-->
-            <!--<property name="properties">-->
-                <!--tomee.remote.support=true-->
-                <!--tomee.serialization.class.blacklist=- -->
-                <!--tomee.serialization.class.whitelis=*-->
-                <!--openejb.system.apps=true-->
-                <!--openejb.servicemanager.enabled=true-->
-                <!--openejb.deployer.binaries.use=true-->
-            <!--</property>-->
-
             <!--<property name="ssl">true</property>-->
             <!--<property name="keystoreFile">${javax.net.ssl.keyStore}</property>-->
             <!--<property name="keystorePass">123456</property>-->

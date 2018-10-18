@@ -13,7 +13,6 @@ package org.superbiz.api;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-import java.io.IOException;
 
 @ServerEndpoint(value = "/socket")
 public class WebSocketResource {
@@ -21,11 +20,5 @@ public class WebSocketResource {
     @OnOpen
     public void onOpen(final Session session) throws Exception {
         session.getBasicRemote().sendText("Hello " + session.getUserPrincipal().getName());
-//        try {
-//            session.getBasicRemote().sendText("Hello");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-
     }
 }
