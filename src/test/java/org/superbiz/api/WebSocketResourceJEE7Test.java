@@ -113,7 +113,7 @@ public class WebSocketResourceJEE7Test {
                 .connectToServer(
                         endpoint,
                         authorizationConfiguration,
-                        new URI("wss", uri.getUserInfo(), uri.getHost(), PORT, "/example/socket",
+                        new URI("wss", uri.getUserInfo(), "www.example.org", PORT, "/example/socket",
                                 null, null));
 
         latch.await(1, TimeUnit.MINUTES);
