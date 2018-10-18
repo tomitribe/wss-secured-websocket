@@ -110,12 +110,6 @@
                     <systemPropertyVariables>
                         <tomee.version>${tomee.version}</tomee.version>
                         <tomee.classifier>${tomee.classifier}</tomee.classifier>
-                        <!--<tomee.httpPort>-1</tomee.httpPort>-->
-                        <!--<skipHttp>true</skipHttp>-->
-                        <!--<serverXml>${project.basedir}/src/test/conf/server.xml</serverXml>-->
-                        <!--<tomee.httpsPort>33333</tomee.httpsPort>-->
-                        <!--<tomee.stopPort>-1</tomee.stopPort>-->
-                        <!--<javax.net.ssl.keyStore>${project.basedir}/src/test/conf/keystore.jks</javax.net.ssl.keyStore>-->
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

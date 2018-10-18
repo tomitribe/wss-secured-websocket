@@ -103,8 +103,10 @@ public class WebSocketResourceJEE7Test {
                 .configurator(configurator)
                 .build();
 
-        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE", "/devel/projects/tomitribe/code/wss-secured-websocket/src/main/certs/self-signed-cert/keystore.jks");
-        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE_PWD", "123456");
+        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE",
+                "src/main/conf/keystore.jks");
+        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_TRUSTSTORE_PWD",
+                "123456");
 
         Session session = ContainerProvider.getWebSocketContainer()
                 .connectToServer(
