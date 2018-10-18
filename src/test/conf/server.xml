@@ -20,6 +20,8 @@
      Documentation at /docs/config/server.html
  -->
 <Server port="8005" shutdown="SHUTDOWN">
+  <!-- TomEE plugin for Tomcat -->
+  <Listener className="org.apache.tomee.catalina.ServerListener" />
   <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -38,11 +40,11 @@
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
-    <!--<Resource name="UserDatabase" auth="Container"-->
-              <!--type="org.apache.catalina.UserDatabase"-->
-              <!--description="User database that can be updated and saved"-->
-              <!--factory="org.apache.catalina.users.MemoryUserDatabaseFactory"-->
-              <!--pathname="conf/tomcat-users.xml" />-->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
@@ -68,14 +70,14 @@
     -->
     <Connector port="8081" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="8443" />
+               redirectPort="8443" xpoweredBy="false" server="Apache TomEE" />
     <!-- A "Connector" using the shared thread pool-->
-
+    <!--
     <Connector executor="tomcatThreadPool"
-               port="8080" protocol="HTTP/1.1"
+               port="8081" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443" />
-
+    -->
     <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443
          This connector uses the NIO implementation. The default
          SSLImplementation will depend on the presence of the APR/native
