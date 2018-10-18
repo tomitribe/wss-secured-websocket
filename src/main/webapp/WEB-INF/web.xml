@@ -14,11 +14,22 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         metadata-complete="false"
-         version="3.0">
-
-    <!--<display-name>zendesk-service</display-name>-->
+         xsi:schemaLocation="
+          http://xmlns.jcp.org/xml/ns/javaee
+          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>ws-security</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>**</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
 </web-app>

@@ -15,7 +15,9 @@
             <!--<property name="skipHttp">true</property>-->
             <property name="appWorkingDir">target/test-apache-tomcat-workdir</property>
             <property name="dir">target/apache-tomee</property>
-
+            <property name="conf">/devel/projects/tomitribe/code/wss-secured-websocket/src/test/conf</property>
+            <!--<property name="user">tomee</property>-->
+            <!--<property name="pass">tomee</property>-->
             <!--<property name="properties">-->
                 <!--tomee.remote.support=true-->
                 <!--tomee.serialization.class.blacklist=- -->
@@ -25,13 +27,13 @@
                 <!--openejb.deployer.binaries.use=true-->
             <!--</property>-->
 
-            <property name="ssl">true</property>
-            <property name="keystoreFile">${javax.net.ssl.keyStore}</property>
-            <property name="keystorePass">123456</property>
-            <property name="keystoreType">JKS</property>
-            <property name="clientAuth">false</property>
-            <property name="keyAlias">tomcat</property>
-            <property name="sslProtocol">TLS</property>
+            <!--<property name="ssl">true</property>-->
+            <!--<property name="keystoreFile">${javax.net.ssl.keyStore}</property>-->
+            <!--<property name="keystorePass">123456</property>-->
+            <!--<property name="keystoreType">JKS</property>-->
+            <!--<property name="clientAuth">false</property>-->
+            <!--<property name="keyAlias">tomcat</property>-->
+            <!--<property name="sslProtocol">TLS</property>-->
         </configuration>
     </container>
 

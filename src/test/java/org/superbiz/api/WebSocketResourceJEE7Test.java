@@ -28,6 +28,7 @@ import javax.websocket.Endpoint;
 import javax.websocket.EndpointConfig;
 import javax.websocket.MessageHandler.Whole;
 import javax.websocket.Session;
+import java.io.File;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
@@ -53,7 +54,8 @@ public class WebSocketResourceJEE7Test {
     @Deployment(name = "cve", testable = false)
     public static final WebArchive app() {
         return ShrinkWrap.create(WebArchive.class, "cve.war")
-                .addClasses(WebSocketResource.class);
+                .addClasses(WebSocketResource.class)
+                .addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"), "web.xml");
     }
 
     @Test
@@ -96,7 +98,7 @@ public class WebSocketResourceJEE7Test {
 
         ClientEndpointConfig.Configurator configurator = new ClientEndpointConfig.Configurator() {
             public void beforeRequest(Map<String, List<String>> headers) {
-                headers.put("Authorization", asList("Basic " + printBase64Binary("Tomitribe:tomee".getBytes())));
+                headers.put("Authorization", asList("Basic " + printBase64Binary("tomee:tomee".getBytes())));
             }
         };
 
@@ -110,7 +112,6 @@ public class WebSocketResourceJEE7Test {
 //        authorizationConfiguration.getUserProperties().put("org.apache.tomcat.websocket.SSL_PROTOCOLS", );
 
 
-        // TODO JEE7 WSS support is not done. SSLConnection factory or userProperties for javax.websocket.EndpointConfig is needed.
         Session session = ContainerProvider.getWebSocketContainer()
                 .connectToServer(
                         endpoint,
@@ -121,6 +122,6 @@ public class WebSocketResourceJEE7Test {
         latch.await(1, TimeUnit.MINUTES);
         session.close();
 
-        assertEquals("Hello", message.get());
+        assertEquals("Hello tomee", message.get());
     }
 }
