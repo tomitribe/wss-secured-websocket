@@ -1,3 +1,7 @@
+### Creating a self signed certificate for localhost
+
+The important part is the CN - CommonName, In this case it will ask for "What is your first and last name?". It must be: localhost
+
 ```bash
 keytool -genkey -alias tomcat -keyalg RSA -keystore keystore.jks
 ```
