@@ -1,7 +1,7 @@
 
 
 
-# Create CA and a domain certificate
+# Create CA and a domain certificates
 
 All passwords are 123456 and the alias passords are the same as the keystores they live in. 
 
@@ -23,13 +23,14 @@ openssl rsa -in example.org.key -pubout -out example.org.pubkey
 ```
 The Certificate Signing Request (CSR):
 
-The important part is the CN - CommonName. We will create a wildcads cert and it must be: *.example.org.
-
-This will be valid for www.example.org, my.example.org...
-
 ```bash
 openssl req -new -key example.org.key -out example.org.csr
 ```
+This command will ask you a fey questions, the important part is the CN - CommonName. 
+We will create a wildcads cert and it must be: *.example.org.
+
+This will be valid for www.example.org, my.example.org...
+
 This is sent to the issuer.
 
 ### Creating the CA... The issuer
